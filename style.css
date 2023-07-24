@@ -1,0 +1,97 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative; /* Added to allow absolute positioning within the container */
+  }
+  
+  h1 {
+    color: #007BFF;
+  }
+  
+  #map {
+    width: 600px;
+    height: 400px;
+    background-image: url(assets/poland.png);
+    background-size: cover;
+    border: 1px solid black;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .destruction-effect {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url(assets/explosion.gif);
+    background-size: cover;
+    animation: explosion 2s linear;
+  }
+  
+  @keyframes explosion {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(3); opacity: 0; }
+  }
+  
+  /* Button styles */
+  #startButton, #destroyButton, #tryAgainButton {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
+  
+  #startButton:hover, #destroyButton:hover, #tryAgainButton:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Score and Game Over message styles */
+  #score, #timeLeft {
+    font-size: 20px;
+    margin-top: 10px;
+  }
+  
+  #gameOver {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 36px;
+    color: white;
+    background-color: red; /* Background color for the Game Over message */
+    padding: 10px; /* Add padding to the Game Over message */
+  }
+  
+  #personalBest {
+    font-size: 20px;
+    margin-top: 10px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: #007BFF;
+  }
+  
+  /* Additional layout adjustments */
+  #startButton {
+    display: none; /* Hide the "Start" button initially */
+  }
+  
+  #tryAgainButton {
+    display: none; /* Hide the "Try Again" button initially */
+    margin-top: 20px; /* Add some space below the "Game Over" message */
+  }
+  
