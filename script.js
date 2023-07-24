@@ -1,38 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Define variables
   var score = 0;
-  var personalBest = parseInt(localStorage.getItem('personalBest')) || 0; // Load personal best from local storage
+  var personalBest = parseInt(localStorage.getItem('personalBest')) || 0;
   var isGameStarted = false;
   var isGameOver = false;
   var timeLeft = 15;
   var mapWidth = 600;
   var mapHeight = 400;
 
-  // Game Over message element
   var gameOverElement = document.getElementById('gameOver');
 
-  // Show personal best score
   document.getElementById('personalBest').innerText = 'Personal Best: ' + personalBest;
 
-  // Function to display or hide game elements based on game state
   function toggleGameElements() {
     if (isGameStarted) {
-      document.getElementById('destroyButton').style.display = 'block'; // Show the "Destroy!" button
-      document.getElementById('startButton').style.display = 'none'; // Hide the "Start Game" button
+      document.getElementById('destroyButton').style.display = 'block';
+      document.getElementById('startButton').style.display = 'none'; 
     } else {
-      document.getElementById('startButton').style.display = 'block'; // Show the "Start Game" button
-      document.getElementById('destroyButton').style.display = 'none'; // Hide the "Destroy!" button
+      document.getElementById('startButton').style.display = 'block'; 
+      document.getElementById('destroyButton').style.display = 'none'; 
     }
 
     if (isGameOver) {
-      gameOverElement.style.display = 'block'; // Show the Game Over message
-      document.getElementById('startButton').style.display = 'block'; // Show the "Start Game" button
+      gameOverElement.style.display = 'block'; 
+      document.getElementById('startButton').style.display = 'block';
     } else {
-      gameOverElement.style.display = 'none'; // Hide the Game Over message
+      gameOverElement.style.display = 'none';
     }
   }
 
-  // Function to start or restart the game
   function startGame() {
     score = 0;
     isGameStarted = true;
@@ -44,12 +39,10 @@ document.addEventListener('DOMContentLoaded', function() {
     startTimer();
   }
 
-  // Add click event to the "Start Game" button
   document.getElementById('startButton').addEventListener('click', function() {
     startGame();
   });
 
-  // Add click event to the "Destroy!" button
   document.getElementById('destroyButton').addEventListener('click', function() {
     if (!isGameOver) {
       var audio = new Audio('assets/explosion.mp3');
@@ -58,7 +51,6 @@ document.addEventListener('DOMContentLoaded', function() {
       var destructionEffect = document.createElement('div');
       destructionEffect.className = 'destruction-effect';
 
-      // Center the explosion on the map
       var mapElement = document.getElementById('map');
       destructionEffect.style.top = (mapHeight - 200) / 2 + 'px';
       destructionEffect.style.left = (mapWidth - 200) / 2 + 'px';
@@ -69,11 +61,9 @@ document.addEventListener('DOMContentLoaded', function() {
         mapElement.removeChild(destructionEffect);
       }, 2000);
 
-      // Increment the score and update the score display
       score++;
       document.getElementById('score').innerText = 'Score: ' + score;
 
-      // Update personal best if needed and save to local storage
       if (score > personalBest) {
         personalBest = score;
         document.getElementById('personalBest').innerText = 'Personal Best: ' + personalBest;
@@ -82,7 +72,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Timer function
   function startTimer() {
     var timerInterval = setInterval(function() {
       timeLeft--;
@@ -94,9 +83,8 @@ document.addEventListener('DOMContentLoaded', function() {
         isGameStarted = false;
         toggleGameElements();
       }
-    }, 1000); // Update time every second
+    }, 1000);
   }
 
-  // Initial display of game elements
   toggleGameElements();
 });

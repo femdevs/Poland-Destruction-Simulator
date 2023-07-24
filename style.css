@@ -1,4 +1,3 @@
-/* General styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -11,7 +10,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: relative; /* Added to allow absolute positioning within the container */
+    position: relative; 
   }
   
   h1 {
@@ -42,7 +41,6 @@ body {
     100% { transform: scale(3); opacity: 0; }
   }
   
-  /* Button styles */
   #startButton, #destroyButton, #tryAgainButton {
     background-color: #007BFF;
     color: white;
@@ -58,7 +56,6 @@ body {
     background-color: #0056b3;
   }
   
-  /* Score and Game Over message styles */
   #score, #timeLeft {
     font-size: 20px;
     margin-top: 10px;
@@ -72,8 +69,8 @@ body {
     transform: translate(-50%, -50%);
     font-size: 36px;
     color: white;
-    background-color: red; /* Background color for the Game Over message */
-    padding: 10px; /* Add padding to the Game Over message */
+    background-color: red; 
+    padding: 10px; 
   }
   
   #personalBest {
@@ -85,13 +82,12 @@ body {
     color: #007BFF;
   }
   
-  /* Additional layout adjustments */
   #startButton {
-    display: none; /* Hide the "Start" button initially */
+    display: none; 
   }
   
   #tryAgainButton {
-    display: none; /* Hide the "Try Again" button initially */
-    margin-top: 20px; /* Add some space below the "Game Over" message */
+    display: none; 
+    margin-top: 20px; 
   }
   
