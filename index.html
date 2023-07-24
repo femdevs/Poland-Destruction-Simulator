@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Poland Destruction Simulator</title>
+  <style>
+    #map {
+      width: 600px;
+      height: 400px;
+      background-image: url(poland.png);
+      background-size: cover;
+      border: 1px solid black;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .destruction-effect {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-image: url(explosion.gif); /* Replace 'explosion.gif' with your visual effect image */
+      background-size: cover;
+      animation: explosion 2s linear;
+    }
+
+    @keyframes explosion {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Poland Destruction Simulator</h1>
+  <div id="map"></div>
+  <button id="destroyButton">Destroy!</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
