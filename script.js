@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   var score = 0;
   var personalBest = parseInt(localStorage.getItem('personalBest')) || 0;
   var isGameStarted = false;
@@ -9,19 +9,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   var gameOverElement = document.getElementById('gameOver');
 
-  document.getElementById('personalBest').innerText = 'Personal Best: ' + personalBest;
+  document.getElementById('personalBest').innerText =
+    'Personal Best: ' + personalBest;
 
   function toggleGameElements() {
     if (isGameStarted) {
       document.getElementById('destroyButton').style.display = 'block';
-      document.getElementById('startButton').style.display = 'none'; 
+      document.getElementById('startButton').style.display = 'none';
     } else {
-      document.getElementById('startButton').style.display = 'block'; 
-      document.getElementById('destroyButton').style.display = 'none'; 
+      document.getElementById('startButton').style.display = 'block';
+      document.getElementById('destroyButton').style.display = 'none';
     }
 
     if (isGameOver) {
-      gameOverElement.style.display = 'block'; 
+      gameOverElement.style.display = 'block';
       document.getElementById('startButton').style.display = 'block';
     } else {
       gameOverElement.style.display = 'none';
@@ -39,41 +40,44 @@ document.addEventListener('DOMContentLoaded', function() {
     startTimer();
   }
 
-  document.getElementById('startButton').addEventListener('click', function() {
+  document.getElementById('startButton').addEventListener('click', function () {
     startGame();
   });
 
-  document.getElementById('destroyButton').addEventListener('click', function() {
-    if (!isGameOver) {
-      var audio = new Audio('assets/explosion.mp3');
-      audio.play();
+  document
+    .getElementById('destroyButton')
+    .addEventListener('click', function () {
+      if (!isGameOver) {
+        var audio = new Audio('assets/explosion.mp3');
+        audio.play();
 
-      var destructionEffect = document.createElement('div');
-      destructionEffect.className = 'destruction-effect';
+        var destructionEffect = document.createElement('div');
+        destructionEffect.className = 'destruction-effect';
 
-      var mapElement = document.getElementById('map');
-      destructionEffect.style.top = (mapHeight - 200) / 2 + 'px';
-      destructionEffect.style.left = (mapWidth - 200) / 2 + 'px';
+        var mapElement = document.getElementById('map');
+        destructionEffect.style.top = (mapHeight - 200) / 2 + 'px';
+        destructionEffect.style.left = (mapWidth - 200) / 2 + 'px';
 
-      mapElement.appendChild(destructionEffect);
+        mapElement.appendChild(destructionEffect);
 
-      setTimeout(function() {
-        mapElement.removeChild(destructionEffect);
-      }, 2000);
+        setTimeout(function () {
+          mapElement.removeChild(destructionEffect);
+        }, 2000);
 
-      score++;
-      document.getElementById('score').innerText = 'Score: ' + score;
+        score++;
+        document.getElementById('score').innerText = 'Score: ' + score;
 
-      if (score > personalBest) {
-        personalBest = score;
-        document.getElementById('personalBest').innerText = 'Personal Best: ' + personalBest;
-        localStorage.setItem('personalBest', personalBest);
+        if (score > personalBest) {
+          personalBest = score;
+          document.getElementById('personalBest').innerText =
+            'Personal Best: ' + personalBest;
+          localStorage.setItem('personalBest', personalBest);
+        }
       }
-    }
-  });
+    });
 
   function startTimer() {
-    var timerInterval = setInterval(function() {
+    var timerInterval = setInterval(function () {
       timeLeft--;
       document.getElementById('timeLeft').innerText = 'Time Left: ' + timeLeft;
 
